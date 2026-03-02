@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://next-ts-full-stack-template.vercel.app/</loc>
+    <lastmod>2024-03-02T14:16:53.477Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://next-ts-full-stack-template.vercel.app/login</loc>
+    <lastmod>2024-03-02T11:04:39.303Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://next-ts-full-stack-template.vercel.app/me</loc>
+    <lastmod>2024-03-02T11:04:39.303Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://next-ts-full-stack-template.vercel.app/home</loc>
+    <lastmod>2024-03-02T11:04:39.303Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>

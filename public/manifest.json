@@ -1,0 +1,42 @@
+{
+	"theme_color": "#232323",
+	"background_color": "#ffffff",
+	"display": "standalone",
+	"scope": "/",
+	"start_url": "/",
+	"name": "Next TS Full Stack Template",
+	"short_name": "Next Template",
+	"description": "Next Full Stack Template with TypeScript, Tailwind CSS, and Zustand, SASS, and PWA",
+	"icons": [
+		{
+			"src": "/favicon-192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/favicon-256.png",
+			"sizes": "256x256",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/favicon-384.png",
+			"sizes": "384x384",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/favicon-512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/maskable_icon.png",
+			"sizes": "2400x2400",
+			"type": "image/png",
+			"purpose": "maskable"
+		}
+	]
+}
