@@ -2,6 +2,8 @@ import { ApiRes } from "@/types";
 import { SafetyUtils, StringUtils } from "@/utils";
 import { useCallback, useState } from "react";
 
+type State = "idle" | "loading" | "success" | "error";
+
 type DataOfApiCall<
 	T,
 	F extends (..._args: any[]) => Promise<ApiRes<T>>,
@@ -20,6 +22,7 @@ type Return<T, F extends (..._args: any[]) => Promise<ApiRes<T>>> = {
 	data: DataOfApiCall<T, F>;
 	loading: boolean;
 	error: unknown;
+	state: State;
 	// U is inferred as Parameters<F>
 	call: (_cb: F, ..._args: Parameters<F>) => Promise<DataOfApiCall<T, F>>;
 	trigger: (..._args: Parameters<F>) => Promise<DataOfApiCall<T, F>>;
@@ -36,7 +39,7 @@ export const useHttpClient = <
 	const [identifier, setIdentifier] = useState<string>(
 		StringUtils.getNonEmptyStringOrElse(options?.id, StringUtils.EMPTY)
 	);
-	const [loading, setLoading] = useState<boolean>(false);
+	const [state, setState] = useState<State>("idle");
 	const [error, setError] = useState<unknown>();
 	const [data, setData] = useState<DataOfApiCall<T, F>>(
 		SafetyUtils.getNonNullValueOrElse(
@@ -47,7 +50,7 @@ export const useHttpClient = <
 	// --- Core Logic ---
 	const executeCallLogic = useCallback(
 		async (cb: F, ...args: Parameters<F>): Promise<T> => {
-			setLoading(true);
+			setState("loading");
 			setError(undefined);
 			try {
 				// Note: We cast args to the correct tuple type U for spread
@@ -68,10 +71,10 @@ export const useHttpClient = <
 					throw err;
 				}
 			} finally {
-				setLoading(false);
+				setState("idle");
 			}
 		},
-		[setData, setLoading, setError, options]
+		[setData, setState, setError, options]
 	);
 
 	// 'call' function uses the inferred F type for its parameters
@@ -98,7 +101,8 @@ export const useHttpClient = <
 		call,
 		trigger,
 		id: identifier,
-		loading,
+		loading: state === "loading",
+		state,
 		updateId: setIdentifier,
 	};
 };

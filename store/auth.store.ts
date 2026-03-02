@@ -33,7 +33,13 @@ type Extras = {
 	sync: () => Promise<IUser>;
 	// loading states
 	isUpdatingProfile: boolean;
+	isRequestingOtp: boolean;
+	isOtpSent: boolean;
+	isVerifyingOtp: boolean;
 	// handlers
+	requestOtpWithEmail: (_email: string) => Promise<null>;
+	verifyOtpWithEmail: (_email: string, _otp: string) => Promise<IUser>;
+	continueOAuthWithGoogle: (_token: string) => Promise<IUser>;
 	updateProfile: (_body: IUpdateUser) => Promise<IUser>;
 	logout: () => Promise<null>;
 };
@@ -71,6 +77,24 @@ export const useAuthStore = createBaseStore<State, Action, Options, Extras>({
 				onSuccess: store.getState().setUser,
 				onError: Notify.error,
 			});
+		const {
+			trigger: requestOtpWithEmail,
+			loading: isRequestingOtp,
+			state: otpSendingState,
+		} = useHttpClient({
+			trigger: AuthApi.requestOtpWithEmail,
+			onError: Notify.error,
+		});
+		const { trigger: verifyOtpWithEmail, loading: isVerifyingOtp } =
+			useHttpClient({
+				trigger: AuthApi.verifyOtpWithEmail,
+				onSuccess: store.getState().setUser,
+				onError: Notify.error,
+			});
+		const { trigger: continueOAuthWithGoogle } = useHttpClient({
+			trigger: AuthApi.continueOAuthWithGoogle,
+			onSuccess: store.getState().setUser,
+		});
 		const { trigger: logout } = useHttpClient({
 			trigger: AuthApi.logout,
 			onSuccess: () => {
@@ -97,8 +121,16 @@ export const useAuthStore = createBaseStore<State, Action, Options, Extras>({
 
 		return {
 			sync,
+			// loading states
 			isUpdatingProfile,
+			isRequestingOtp,
+			isOtpSent: otpSendingState === "success",
+			isVerifyingOtp,
+			// handlers
 			updateProfile,
+			requestOtpWithEmail,
+			verifyOtpWithEmail,
+			continueOAuthWithGoogle,
 			logout,
 		};
 	},
