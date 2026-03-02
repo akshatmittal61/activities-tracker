@@ -6,3 +6,10 @@ import { AuthMapping, User } from "./schema";
 export type IUser = User;
 export type IUpdateUser = Omit<UpdateModel<IUser>, "email">;
 export type IAuthMapping = Omit<AuthMapping, "user"> & { user: IUser | null };
+
+// Others
+export type ContactMessage = {
+	name: string;
+	email: string;
+	message: string;
+};
