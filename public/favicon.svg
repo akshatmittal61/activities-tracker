@@ -1,15 +1,1 @@
-<svg width="1920" height="1920" viewBox="0 0 1920 1920" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_218_2)">
-<g clip-path="url(#clip1_218_2)">
-<path d="M961.31 126.171L1802.13 1920H1920L1018.94 0H901.064L0 1920H117.872L961.31 126.171ZM966.548 1555.2L1259.92 1250.74L1113.23 1097.14L966.548 943.543L675.798 1250.74L966.548 1555.2ZM966.548 1398.86L825.102 1250.74L966.548 1102.63L1107.99 1250.74L966.548 1398.86Z" fill="black"/>
-</g>
-</g>
-<defs>
-<clipPath id="clip0_218_2">
-<rect width="1920" height="1920" fill="white"/>
-</clipPath>
-<clipPath id="clip1_218_2">
-<rect width="1920" height="1920" fill="white"/>
-</clipPath>
-</defs>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-activity-icon lucide-activity"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>

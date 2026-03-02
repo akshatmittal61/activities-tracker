@@ -1,4 +1,4 @@
-import { Routes, socials } from "@/constants";
+import { AppSeo, Routes, socials } from "@/constants";
 import { Multimedia } from "@/library";
 import { stylesConfig } from "@/utils";
 import Link from "next/link";
@@ -46,7 +46,7 @@ export const Footer: React.FC = () => {
 				</ul>
 				<div className={classes("-copyright")}>
 					<p>
-						© {new Date().getFullYear()} Wault It. All rights
+						© {new Date().getFullYear()} {AppSeo.title}. All rights
 						reserved.
 					</p>
 				</div>

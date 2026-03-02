@@ -3,6 +3,7 @@ export const images = {
 	faviconIco: "/favicon.ico",
 	ogImage: "/images/og-image.png",
 	lost: "/images/lost.png",
+	bgLandscape: "/images/bg.jpg",
 };
 
 export const vectors = {

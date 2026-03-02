@@ -2,9 +2,9 @@ import { SeoProps } from "@/types";
 import { frontendBaseUrl } from "./variables";
 
 export class AppSeo {
-	static title: SeoProps["title"] = "NextJS Boilerplate";
+	static title: SeoProps["title"] = "Activities Tracker";
 	static description: SeoProps["description"] =
-		"NextJS Boilerplate with TypeScript, ESLint, Prettier, SASS, Tailwind, and more.";
+		"Track your activities and time with ease.";
 	static image: SeoProps["image"] = `${frontendBaseUrl}/og-image.png`;
 	static canonical: SeoProps["canonical"] = frontendBaseUrl;
 	static author: SeoProps["author"];
