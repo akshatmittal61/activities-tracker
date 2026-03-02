@@ -2,8 +2,10 @@ import {
 	AppNetworkStatus,
 	AppTheme,
 	T_API_METHODS,
+	T_AUTH_MAPPING_PROVIDER,
 	T_EMAIL_TEMPLATE,
 	T_NODE_ENV,
+	T_OTP_STATUS,
 	T_USER_ROLE,
 } from "@/types";
 import { getEnumeration } from "@/utils";
@@ -40,3 +42,10 @@ export const emailTemplates = getEnumeration<T_EMAIL_TEMPLATE>([
 	"NEW_USER_ONBOARDED",
 	"CONTACT_MESSAGE",
 ]);
+
+export const authMappingProvider = getEnumeration<T_AUTH_MAPPING_PROVIDER>([
+	"otp",
+	"google",
+]);
+
+export const OTP_STATUS = getEnumeration<T_OTP_STATUS>(["PENDING", "EXPIRED"]);

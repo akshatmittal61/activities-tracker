@@ -1,5 +1,5 @@
-import { AuthMappingSchema, UserSchema } from "@/schema";
-import { AuthMapping, User } from "@/types";
+import { AuthMappingSchema, OtpSchema, UserSchema } from "@/schema";
+import { AuthMapping, Otp, User } from "@/types";
 import mongoose from "mongoose";
 
 class ModelFactory<T = any> {
@@ -25,27 +25,34 @@ declare global {
 	var models: {
 		AuthMapping: mongoose.Model<AuthMapping>;
 		User: mongoose.Model<User>;
+		Otp: mongoose.Model<Otp>;
 	};
 }
 
 export class Models {
 	public static AuthMapping: mongoose.Model<AuthMapping>;
 	public static User: mongoose.Model<User>;
+	public static Otp: mongoose.Model<Otp>;
 
 	public static init() {
 		if (global.models) {
 			Models.AuthMapping = global.models.AuthMapping;
 			Models.User = global.models.User;
+			Models.Otp = global.models.Otp;
 			return;
 		}
+
 		Models.AuthMapping = new ModelFactory<AuthMapping>(
 			"AuthMapping",
 			AuthMappingSchema
 		).model;
 		Models.User = new ModelFactory<User>("User", UserSchema).model;
+		Models.Otp = new ModelFactory<Otp>("Otp", OtpSchema).model;
+
 		global.models = {
 			AuthMapping: Models.AuthMapping,
 			User: Models.User,
+			Otp: Models.Otp,
 		};
 	}
 }

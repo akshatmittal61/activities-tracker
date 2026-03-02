@@ -1,4 +1,4 @@
-import { T_USER_ROLE } from "./enum";
+import { T_OTP_STATUS, T_USER_ROLE } from "./enum";
 import { Model } from "./parser";
 
 /**
@@ -28,4 +28,16 @@ export type AuthMapping = Model<{
 	providerName: string;
 	misc?: any;
 	user: string | null;
+}>;
+
+/**
+ * Otp model
+ * @param {string} email - Email of the user
+ * @param {string} otp - Otp of the user
+ * @param {string} status - Status of the otp (Pending, Verified)
+ */
+export type Otp = Model<{
+	email: string;
+	otp: string;
+	status: T_OTP_STATUS;
 }>;
