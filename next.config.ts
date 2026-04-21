@@ -34,7 +34,6 @@ const nextConfig: NextConfig = {
 			"import",
 			"color-functions",
 			"global-builtin",
-			"mixed-decls",
 		],
 	},
 };

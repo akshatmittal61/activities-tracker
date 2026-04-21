@@ -1,10 +1,11 @@
-import mongoose from "mongoose";
 import { FilterQuery, UpdateQuery } from "@/db";
 import { CreateModel } from "@/types";
 import { getObjectFromMongoResponse, SafetyUtils } from "@/utils";
+import { Model } from "@/models";
+import { Logger } from "@/log";
 
 export abstract class BaseRepo<T = any, P = T> {
-	protected abstract model: mongoose.Model<T>;
+	protected abstract model: Model<T>;
 
 	/**
 	 * A static map to hold instances of the repository classes.
@@ -51,6 +52,7 @@ export abstract class BaseRepo<T = any, P = T> {
 	 * @returns The matching document, or null if no document was found.
 	 */
 	public async findOne(query: FilterQuery<T>): Promise<P | null> {
+		Logger.debug("in findOne", this.model, typeof this.model);
 		const res = await this.model.findOne<T>(query);
 		return this.parser(res);
 	}

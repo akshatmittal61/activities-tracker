@@ -113,7 +113,8 @@ export class ApiRoute {
 		status: "success" | "failure",
 		req: ApiRequest,
 		res: ApiResponse,
-		startTime: number
+		startTime: number,
+		result: void | Error
 	): void {
 		const executionTime = Date.now() - startTime;
 		const request = {
@@ -139,9 +140,16 @@ export class ApiRoute {
 			headers: res.getHeaders ? res.getHeaders() : {}, // Assuming `getHeaders` exists
 			time: executionTime,
 		};
+
+		if (status === "failure") {
+			Logger.error("Error in API handler for", req.url, result);
+		} else {
+			Logger.info("Success in API handler for", req.url, result);
+		}
 		Logger.info(
 			`${request.method} ${response.status} ${request.uri} - ${response.time}ms`
 		);
+
 		Logger.debug(status.toUpperCase(), "Request", request);
 		Logger.debug(status.toUpperCase(), "Request Curl", requestCurl);
 		Logger.debug(status.toUpperCase(), "Response", response);
@@ -159,7 +167,9 @@ export class ApiRoute {
 			try {
 				if (this.useDatabase) {
 					await this.dbContainer.db.connect();
+					Logger.debug("DB connected, prepping for models now");
 					Models.init();
+					Logger.debug("Models initialized");
 				}
 
 				const method = StringUtils.valueOf<T_API_METHODS>(

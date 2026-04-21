@@ -26,10 +26,6 @@ export default function Document() {
 				<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 				<link rel="shortcut icon" href="/favicon.ico" />
 				<link rel="manifest" href="/manifest.json" />
-				<meta
-					name="viewport"
-					content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
-				/>
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 			</Head>
 			<body className="antialiased">
